@@ -8,6 +8,7 @@ body {
 	font-family: sans-serif;
 	font-weight: 100;
 	letter-spacing: 0.01em;
+	color: #383838;
 }
 
 /* NAV */
@@ -68,24 +69,30 @@ body {
 	bottom: 40px;
 	border: 1px solid gray;
 	border-radius: 5px;
-	overflow: hidden;
 }
 
 #contact .list {
 	height: 100%;
-	width: 33.3%;
+	width: 33%;
 	border-right: 1px solid gray;
+	overflow: scroll;
 }
 
 #contact .list a {
 	display: block;
-	text-align: right;
+	text-align: center;
 	padding: 15px 15px;
 	border-bottom: 1px solid gray;
 	cursor: pointer;
+	border-right: 3px solid white;
 }
 
 #contact .list a.selected {
+	border-right: 3px solid #008ED4;
+	font-weight: bold;
+}
+
+#contact .list a:hover {
 	border-right: 3px solid #008ED4;
 }
 
@@ -93,4 +100,26 @@ body {
 	float: right;
 	height: 100%;
 	width: 66.6%;
+}
+
+#contact .cont h3 {
+	text-align: center;
+	font-weight: normal;
+	font-size: 1.5em;
+}
+
+#contact .cont span {
+	line-height: 170%;
+}
+
+#contact .cont span.rule {
+	display: inline-block;
+	width: 40%;
+	padding-right: 3%;
+	font-size:	.8em;
+	text-align: right;
+}
+
+#contact .cont span.data {
+	display: inline-block;
 }
