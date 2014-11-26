@@ -1,0 +1,58 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: sans-serif;
+	font-weight: 100;
+	letter-spacing: 0.01em;
+}
+
+/* NAV */
+
+#nav {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: #008ED4;
+	overflow: hidden;
+	color: white;
+}
+
+#nav h1 {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+}
+
+#nav h1,
+#nav a,
+#nav form {
+	display: inline-block;
+	margin:0;
+	padding: 10px 10px 7px 10px;
+	cursor: pointer;
+}
+
+#nav a:hover {
+	background-color: #0085ba;
+}
+
+#nav #lien {
+	float: right;
+}
+
+#nav form input[type=text] {
+	background-color: #008ED4;
+	border: 0;
+	margin: 0;
+	padding:0;
+	font-size: 1em;
+	color: white;
+	border-bottom: 1px white solid;
+}
