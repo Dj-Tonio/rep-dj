@@ -56,3 +56,41 @@ body {
 	color: white;
 	border-bottom: 1px white solid;
 }
+
+/* CONTACT */
+
+#contact {
+	display: block;
+	position: fixed;
+	top: 60px;
+	right: 20%;
+	left: 20%;
+	bottom: 40px;
+	border: 1px solid gray;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+#contact .list {
+	height: 100%;
+	width: 33.3%;
+	border-right: 1px solid gray;
+}
+
+#contact .list a {
+	display: block;
+	text-align: right;
+	padding: 15px 15px;
+	border-bottom: 1px solid gray;
+	cursor: pointer;
+}
+
+#contact .list a.selected {
+	border-right: 3px solid #008ED4;
+}
+
+#contact .cont {
+	float: right;
+	height: 100%;
+	width: 66.6%;
+}
