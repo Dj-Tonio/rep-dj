@@ -71,7 +71,43 @@ body {
 	display: block;
 	background-color: #008ED4;
 	z-index: 97;
+	color: white;
+	text-align: center;
 }
+
+#panel .profil {
+	display: inline-block;
+	height: 100%;
+	width: 25%;
+}
+
+#panel .profil span {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#panel .profil img {
+	height: 80px;
+	width: 80px;
+}
+
+#panel .notification {
+	display: inline-block;
+	height: 100%;
+	width: 25%;
+	border-right: 1px dotted white;
+}
+
+#panel h3 {
+	font-size: 150%;
+	font-weight: 200;
+	line-height: 1.5;
+	font-family: "Raleway","Helvetica Neue",Helvetica,Arial,sans-serif;
+	letter-spacing: 0.05em;
+	margin: 0;
+	margin: 10px;
+}
+
 
 /* CONTACT */
 
