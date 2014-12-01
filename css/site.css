@@ -42,7 +42,7 @@ body {
 }
 
 #nav a:hover {
-	background-color: #0085ba;
+	background-color: #0071bd;
 }
 
 #nav #lien {
@@ -63,7 +63,6 @@ body {
 
 #panel {
 	width: 100%;
-	height: 250px;
 	overflow: hidden;
 	top: 36px;
 	left: 0;
@@ -79,6 +78,7 @@ body {
 	display: inline-block;
 	height: 100%;
 	width: 25%;
+	border-left: 1px dotted white;
 }
 
 #panel .profil span {
@@ -89,12 +89,28 @@ body {
 #panel .profil img {
 	height: 80px;
 	width: 80px;
+	background-color: #0071bd;
+	border-radius: 6px;
+	box-shadow: 0px 0px 2px #0071bd;
+}
+
+#panel .profil p {
+	display: inline-block;
+	padding-right: 20px;
+	padding-left: 20px;
+	text-align: justify;
+	font-size: .9em;
 }
 
 #panel .notification {
 	display: inline-block;
 	height: 100%;
 	width: 25%;
+}
+
+#panel .line_vert {
+	display: inline-block;
+	height: 100%;
 	border-right: 1px dotted white;
 }
 
@@ -108,6 +124,16 @@ body {
 	margin: 10px;
 }
 
+#panel a {
+	color: white;
+	text-decoration: none;
+	font-style: italic;
+	font-size: .8em;
+}
+
+#panel a:hover {
+	text-decoration: underline;
+}
 
 /* CONTACT */
 
