@@ -36,10 +36,13 @@ $panel = {
 		}
 	},
 	show : function(){
-		$("#panel").slideDown();
+		$("#nav").css("box-shadow","none");
+		$("#panel").slideDown(400);
 	},
 	hide : function(){
-		$("#panel").slideUp();
+		$("#panel").slideUp(400, function() {
+			$("#nav").css("box-shadow","0px 0px 2px #0071bd");
+		});
 	}
 };
 
@@ -60,13 +63,13 @@ $popup = {
 			"left"   : (($(document).width()-$popup.width)/2) + "px"
 		});
 		if ($popup.easyclose) $("#pop_overlay").click($popup.close);
-		$("#pop_overlay").fadeIn("slow");
+		$("#pop_overlay").fadeIn(400);
 		$("#popup").fadeIn("slow");
 	},
 	close : function(){
 		if (!$popup.displayed) return;
 		$popup.displayed = false;
-		$("#pop_overlay").fadeOut().fadeOut("slow", function() {
+		$("#pop_overlay").fadeOut().fadeOut(400, function() {
 			$("#pop_overlay").remove();
 		});
 		$("#popup").fadeOut("slow", function() {
