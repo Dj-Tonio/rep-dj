@@ -39,6 +39,25 @@ body {
 	padding: 10px 10px 7px 10px;
 	cursor: pointer;
 	font-size: 17px;
+	outline: 0;
+}
+
+#nav form ::-webkit-input-placeholder { /* WebKit browsers */
+	color:    #92cff3;
+}
+
+#nav form :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color:    #92cff3;
+	opacity:  1;
+}
+
+#nav form ::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color:    #92cff3;
+	opacity:  1;
+}
+
+#nav form :-ms-input-placeholder { /* Internet Explorer 10+ */
+	color:    #92cff3;
 }
 
 #nav a:hover {
@@ -58,6 +77,9 @@ body {
 	color: white;
 	border-bottom: 1px white solid;
 	font-size: 15px;
+	outline: 0;
+	font-family: sans-serif;
+	width: 200px;
 }
 
 /* PANEL */
@@ -252,4 +274,13 @@ body {
 
 #contact .cont span.data {
 	display: inline-block;
+}
+
+/* LOADING GIF */
+
+#loading {
+	display: block;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 }

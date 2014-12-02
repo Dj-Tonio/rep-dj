@@ -5,6 +5,21 @@ $(document).ready(function() {
 	});
 });
 
+$loading = {
+	nbrequete : 0,
+	start : function () {
+		if ($loading.nbrequete<0) $loading.nbrequete=0;
+		$loading.nbrequete += 1;
+		if ($loading.nbrequete != 1) return;
+		$("body").append("<img id='loading' src='img/loading.gif' />");
+	},
+	stop : function () {
+		$loading.nbrequete -= 1;
+		if ($loading.nbrequete > 0) return;
+		$("#loading").remove();
+	}
+};
+
 $panel = {
 	displayed : false,
 	init : function(){
@@ -40,7 +55,7 @@ $popup = {
 		$("body").append("<div id='popup' style='display:none'></div>");
 		$("#popup").append($content);
 		$("#popup").css({
-			"width"  : $popup.width + "px",
+			"width"  : $popup.width  + "px",
 			"height" : $popup.height + "px",
 			"left"   : (($(document).width()-$popup.width)/2) + "px"
 		});
