@@ -57,6 +57,7 @@ body {
 	font-size: 1em;
 	color: white;
 	border-bottom: 1px white solid;
+	font-size: 15px;
 }
 
 /* PANEL */
@@ -75,10 +76,13 @@ body {
 }
 
 #panel .profil {
-	display: inline-block;
+	float: right;
+	display: block;
 	height: 100%;
-	width: 25%;
+	width: 30%;
 	border-left: 1px dotted white;
+	margin-right: 20%;
+	margin-bottom: 25px;
 }
 
 #panel .profil span {
@@ -102,10 +106,14 @@ body {
 	font-size: .9em;
 }
 
+/* NOTIFICATION */
+
 #panel .notification {
-	display: inline-block;
+	display: block;
 	height: 100%;
-	width: 25%;
+	width: 30%;
+	margin-left: 20%;
+	margin-bottom: 25px;
 }
 
 #panel .line_vert {
@@ -133,6 +141,27 @@ body {
 
 #panel a:hover {
 	text-decoration: underline;
+}
+
+#panel .notification .noti {
+	text-align: justify;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px;
+	font-size: .9em;
+	margin-right: 10px;
+}
+
+#panel .notification .noti:hover {
+	background-color: #0071bd;
+}
+
+#panel .notification .noti h4 {
+	font-size: 1.1em;
+	font-weight: normal;
+	margin: 0;
+	margin-bottom: 3px;
+	padding: 0;
 }
 
 /* CONTACT */
