@@ -56,9 +56,27 @@ $carnet = {
 				$("#carnet_cont").append("<span class='rule'>" + libel + " :</span>");
 				$("#carnet_cont").append("<span class='data'>" + coordonne + "</span><br />");
 			});
+			$option = $("<div class='option'></div>");
+			$msg = $("<a>envoyer un message</a>");
+			$msg.click(function(){
+				$carnet.sendmessage($id);
+			});
+			$option.append($msg);
+			$supp = $("<a>supprimer</a>");
+			$supp.click(function(){
+				$carnet.supprimer($id);
+			});
+			$option.append($supp);
+			$("#carnet_cont").append($option);
 		}).always(function() {
 			$loading.stop();
 		});
+	},
+	sendmessage: function ($id) {
+		alert($id);
+	},
+	supprimer : function($id) {
+		alert($id);
 	}
 };
 

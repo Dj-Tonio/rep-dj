@@ -302,6 +302,28 @@ body {
 	margin-top: 30%;
 }
 
+#contact .cont .option {
+	display: block;
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	width: 66%;
+}
+
+#contact .cont .option a {
+	display: inline-block;
+	padding: 0 7px;
+	text-decoration: none;
+	font-style: italic;
+	font-size: .8em;
+	color: #383838;
+	cursor: pointer;
+}
+
+#contact .cont .option a:hover {
+	text-decoration: underline;
+}
+
 /* LOADING GIF */
 
 #loading {
