@@ -1,11 +1,3 @@
-$(document).ready(function() {
-	$panel.init();
-	$carnet.construct();
-	$(document).keyup(function(e) {
-		if (e.keyCode==27 && $popup.easyclose) $popup.close();   // esc
-	});
-});
-
 $login = {
 	verify : function($user){
 		return true;
@@ -13,8 +5,21 @@ $login = {
 };
 
 $error = {
+	msg_time : 10000,
+	displayed : false,
 	process : function () {
 		return true;
+	},
+	toast : function ($msg) {
+		if($error.displayed) return;
+		$error.displayed = true;
+		$toast = $("<div id='err_toast' class='err_msg' style='display:none'>" + $msg + "</div>");
+		$("body").append($toast);
+		$toast.fadeIn(400);
+		$toast.delay($error.msg_time).fadeOut(400,function(){
+			$toast.remove();
+			$error.displayed = false;
+		});
 	}
 };
 
@@ -158,3 +163,53 @@ $popup = {
 		$popup.height    = 400;
 	}
 };
+
+$page = {
+	nomsite : "Papa",
+	courant : "home",
+	available : {
+		"home"     : ["Home",             $carnet.construct, $carnet.destruct],
+		"carnet"   : ["Carnet d'adresse", $carnet.construct, $carnet.destruct],
+		"messages" : ["Messages",         $carnet.construct, $carnet.destruct]
+	},
+	init : function () {
+		requete = $(location).attr('hash').replace(/^#/,"");
+		if (requete in $page.available) $page.courant = requete;
+
+		$.each($page.available,function(nom,info){
+			$lien = $("<a id='lien_" + nom + "' href='#" + nom + "'>" + info[0] + "</a>");
+			if (nom == $page.courant) {
+				$lien.addClass("selected");
+			}
+			$lien.click(function(){
+				$page.change(nom);
+			});
+			$("#lien").append($lien);
+		});
+		$page.available[$page.courant][1]();
+		document.title = $page.nomsite + " - " + $page.available[$page.courant][0];
+	},
+	reset : function () {
+		$(".page").remove();
+	},
+	change : function ($nom) {
+		if (!($nom in $page.available)) return;
+		$page.available[$page.courant][2]();
+		$page.courant = $nom;
+		$page.reset();
+		$("#nav #lien a").removeClass("selected");
+		$("#lien #lien_" + $page.courant).addClass("selected");
+		document.title = $page.nomsite + " - " + $page.available[$page.courant][0];
+		$page.available[$page.courant][1]();
+	}
+};
+
+
+$(document).ready(function() {
+	$panel.init();
+	$page.init();
+	//$carnet.construct();
+	$(document).keyup(function(e) {
+		if (e.keyCode==27 && $popup.easyclose) $popup.close();   // esc
+		});
+	});

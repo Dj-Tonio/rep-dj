@@ -47,6 +47,8 @@ body {
 	line-height: 50px;
 	cursor: pointer;
 	font-size: 17px;
+	color: white;
+	text-decoration: none;
 	outline: 0;
 }
 
@@ -331,4 +333,20 @@ body {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+}
+
+/* MESSAGE D'ERREURE */
+
+.err_msg {
+	display: block;
+	z-index: 97;
+	position: fixed;
+	bottom: 30px;
+	left: 30px;
+	background-color: #d83535;
+	box-shadow: 0px 0px 2px #d83535;
+	padding: 10px 20px;
+	color: white;
+	border-radius: 5px;
+
 }
