@@ -85,6 +85,67 @@ $carnet = {
 	}
 };
 
+$message = {
+	current : -1,
+	displayed: false,
+	refreshset: false,
+	last : "",
+	construct : function() {
+		$messagerie = $("<div id='message' class='page'></div>");
+		$list       = $("<div class='list' id='conversation_list'></div>");
+		$cont       = $("<div class='conversation'></div>");
+		$messagerie.append($list);
+		$messagerie.append($cont);
+		$("body").append($messagerie);
+		$message.displayed = true;
+		$message.refresh();
+		if(!$message.refreshset){
+			window.setInterval($message.refresh, 1500);
+			$message.refreshset = true;
+		}
+	},
+	refresh : function (){
+		if(!$message.displayed) return;
+		$loading.start();
+		$.post("ajax/get_conversation.php", { id_person : $message.current }, function( data ) {
+			data = $.parseJSON(data);
+			if (!$login.verify(data.user) || !$error.process(data.error)) return;
+			$("#conversation_list").empty();
+			$.each(data.list,function ($index, $content) {
+				tab = $("<a id='conv_" + $content[0] + "'>" + $content[1] + "</a>");
+				if ($content[0] == $message.current) tab.addClass("selected");
+				if ($content[2] > 0) tab.addClass("nouveau");
+				tab.click(function(){
+					$message.view($content[0]);
+				});
+				$("#conversation_list").append(tab);
+			});
+			if($message.current!=-1) $.each(data.msg,$refresh.addmsg);
+		}).always(function() {
+			$loading.stop();
+		});
+	},
+	addmsg : function ($cont) {
+
+	},
+	view : function ($id) {
+		if(!$message.displayed) return;
+		$loading.start();
+		$.post("ajax/get_conversation_msg.php", { id_person : $message.current }, function( data ) {
+			data = $.parseJSON(data);
+			if (!$login.verify(data.user) || !$error.process(data.error)) return;
+			// $("#conversation_list").empty();
+			$.each(data.msg,$refresh.addmsg);
+		}).always(function() {
+			$loading.stop();
+		});
+	},
+	destruct : function () {
+		$message.current   = -1;
+		$message.displayed = false;
+	}
+};
+
 $loading = {
 	nbrequete : 0,
 	start : function () {
@@ -170,7 +231,7 @@ $page = {
 	available : {
 		"home"     : ["Home",             $carnet.construct, $carnet.destruct],
 		"carnet"   : ["Carnet d'adresse", $carnet.construct, $carnet.destruct],
-		"messages" : ["Messages",         $carnet.construct, $carnet.destruct]
+		"messages" : ["Messages",         $message.construct, $message.destruct]
 	},
 	init : function () {
 		requete = $(location).attr('hash').replace(/^#/,"");
@@ -204,11 +265,9 @@ $page = {
 	}
 };
 
-
 $(document).ready(function() {
 	$panel.init();
 	$page.init();
-	//$carnet.construct();
 	$(document).keyup(function(e) {
 		if (e.keyCode==27 && $popup.easyclose) $popup.close();   // esc
 		});
